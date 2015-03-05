@@ -33,11 +33,51 @@ var clickmanager = function(slider) {
         changedColor2();
     }
 }
+ 
+ var selectmanager =function() {
+   y = document.getElementById("select").selectedIndex;
+   z =document.getElementsByTagName("option")[y].value;
+   Console.log(z);
 
 
+   if(value == "States"){
+    displayStates();
+   }
+
+   else{
+    displayCounties();
+   }
+ }
+
+ var displayStates = function(){
 d3.json("us.json", function(error, topology) {
     states = topojson.feature(topology, topology.objects.states).features,
         neighbors = topojson.neighbors(topology.objects.states.geometries);
+
+  
+
+    svg.selectAll("path")
+        .data(topojson.feature(topology, topology.objects.states).features)
+        .enter().append("path")
+        .attr("d", path)
+
+
+    svg.selectAll(".states")
+        .data(states)
+        .enter().insert("path")
+        .attr("class", "states")
+        .attr("d", path)
+
+
+
+
+});
+
+}
+
+var displayCounties = function(){
+  d3.json("us.json", function(error, topology) {
+    
 
     counties = topojson.feature(topology, topology.objects.counties).features,
         neighbors1 = topojson.neighbors(topology.objects.counties.geometries);
@@ -59,6 +99,7 @@ d3.json("us.json", function(error, topology) {
 
 });
 
+}
 var changedColor = function() {
     var color = d3.scale.category10();
     svg.selectAll(".counties")
