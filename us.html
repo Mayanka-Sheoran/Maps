@@ -9,15 +9,13 @@ path {
 path:hover {
     fill: darkgrey;
 }
-
 </style>
 
 <body>
     <label for=slider>Color</label>
-    <input type=range id="slider" onchange="clickmanager(this)" />
-    <div id="hi"></div>
+    <input type=range id="slider" onchange="map.rendermap.clickmanager(this)" />
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://d3js.org/topojson.v1.min.js"></script>
-    <script src="maps.js"></script>
-
+    <script src="map.js"></script>
+    <script src="rendermap.js"></script>
 </body>
