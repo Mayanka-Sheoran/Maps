@@ -1,0 +1,20 @@
+path {
+    fill: lightblue;
+    stroke: black;
+    stroke-width: .5px;
+}
+path:hover {
+    fill: darkgrey;
+}
+.hidden {
+    display: none;
+}
+div.tooltip {
+    color: black;
+    background: lightyellow;
+    padding: .5em;
+    border-radius: 2px;
+    opacity: 0.9;
+    position: absolute;
+}
+
