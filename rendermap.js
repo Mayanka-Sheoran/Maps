@@ -23,7 +23,7 @@ map.rendermap = (function() {
         svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
     }
 
-    
+
 
 
     var clickmanager = function(slider) {
@@ -61,7 +61,13 @@ map.rendermap = (function() {
 
 
 
+        d3.tsv("us_county_names.tsv", function(error, data) {
+            var datanew = data[0];
+            console.log(datanew);
 
+
+
+        });
 
     });
 
