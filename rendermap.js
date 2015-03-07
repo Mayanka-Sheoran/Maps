@@ -2,8 +2,7 @@ map.rendermap = (function() {
     var width = 960,
     height = 500;
 
-    var tooltip = d3.select("body").append("div")
-    .attr("class", "tooltip");
+   
 
 
     var states = {};
@@ -13,11 +12,14 @@ map.rendermap = (function() {
 
     var path = d3.geo.path();
 
-    var svg = d3.select("body").append("svg")
+    var svg = d3.select("#map").append("svg")
     .attr("width", width)
     .attr("height", height)
     .call(d3.behavior.zoom().scaleExtent([0.5, 15]).on("zoom", draw))
     .append('g');
+
+     var tooltip = d3.select("#map").append("div")
+    .attr("class", "tooltip");
 
     function draw() {
         svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
@@ -57,11 +59,12 @@ map.rendermap = (function() {
 
         d3.tsv("us_country_names.tsv", function(error, data) {
             n = states.length;
-
+console.log(states[0].properties);
             states.forEach(function(d, i) {
+                if(d.id==states[i].id){
                 d.id = data[i]["id  code  name"].split("  ")[1];
                 d.name = data[i]["id  code  name"].split("  ")[2];
-
+}
             });
 
 
